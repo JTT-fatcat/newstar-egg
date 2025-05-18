@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>永恒绽放的玫瑰</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: #000;
+        }
+        #canvasContainer {
+            position: relative;
+            filter: drop-shadow(0 0 10px rgba(255,50,200,0.7));
+        }
+    </style>
+</head>
+<body>
+<div id="canvasContainer">
+    <canvas id="roseCanvas"></canvas>
+</div>
+
+<script>
+(function() {
+    // 随机参数初始化 [[40][63]]
+    const R = Math.random;
+    const config = {
+        petalCount: 10 + R()*20|0,    // 花瓣数量随机
+        hue: 330 + R()*30|0,          // 色相随机偏移
+        stemCurve: R()*0.4 - 0.2,     // 茎秆弯曲随机
+        bloomSize: 0.6 + R()*0.4      // 花朵大小随机
+    };
+
+    const canvas = document.getElementById('roseCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    // 自适应画布 
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    // 数学函数简写 [[40][63]]
+    const {sin:S, cos:C, PI} = Math;
+    const TAU = PI*2;
+
+    // 动态绘制函数
+    function draw(t) {
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        
+        // 绘制茎秆 
+        ctx.beginPath();
+        ctx.moveTo(canvas.width/2, canvas.height);
+        ctx.bezierCurveTo(
+            canvas.width/2 + 100*config.stemCurve, canvas.height*0.7,
+            canvas.width/2 - 80*config.stemCurve, canvas.height*0.5,
+            canvas.width/2, canvas.height*0.35
+        );
+        ctx.strokeStyle = `hsl(120, 70%, ${30+R()*10}%)`;
+        ctx.lineWidth = 8;
+        ctx.stroke();
+
+        // 绘制玫瑰花 [[63][40]]
+        const scale = 120 * config.bloomSize;
+        const time = t/3000;
+        const centerX = canvas.width/2;
+        const centerY = canvas.height*0.35;
+        
+        ctx.save();
+        ctx.translate(centerX, centerY);
+        
+        // 多层花瓣
+        for(let layer=0; layer<3; layer++) {
+            ctx.beginPath();
+            const layerScale = scale * (1 - layer*0.2);
+            const rotateOffset = time + layer*0.2;
+            
+            for(let i=0; i<config.petalCount; i++) {
+                const angle = TAU*i/config.petalCount + rotateOffset;
+                const dx = S(angle) * layerScale;
+                const dy = C(angle) * layerScale * (0.8 + R()*0.2);
+                
+                // 花瓣形状算法 
+                const petalHue = config.hue + layer*5;
+                const gradient = ctx.createRadialGradient(dx, dy, 0, dx, dy, layerScale);
+                gradient.addColorStop(0, `hsl(${petalHue}, 85%, 75%)`);
+                gradient.addColorStop(1, `hsl(${petalHue}, 90%, 50%)`);
+                
+                ctx.fillStyle = gradient;
+                ctx.beginPath();
+                ctx.ellipse(dx, dy, 
+                    layerScale*(0.6 + R()*0.2), 
+                    layerScale*(0.4 + R()*0.2),
+                    angle, 0, TAU
+                );
+                ctx.fill();
+            }
+        }
+
+        // 绘制花蕊 
+        ctx.beginPath();
+        ctx.arc(0, 0, scale*0.15, 0, TAU);
+        ctx.fillStyle = `hsl(60, 80%, 70%)`;
+        ctx.fill();
+        ctx.restore();
+
+        // 添加粒子特效 [[9][22]]
+        if(t%10 < 5) {
+            const particle = {
+                x: centerX + (R()-0.5)*40,
+                y: centerY - 50 + (R()-0.5)*20,
+                vx: (R()-0.5)*0.2,
+                vy: -R()*0.5,
+                life: 500 + R()*1000
+            };
+            
+            ctx.beginPath();
+            ctx.arc(particle.x, particle.y, 1+R()*3, 0, TAU);
+            ctx.fillStyle = `hsla(${config.hue}, 70%, 70%, ${0.5+R()*0.3})`;
+            ctx.fill();
+        }
+
+        requestAnimationFrame(draw);
+    }
+    
+    // 启动动画
+    requestAnimationFrame(draw);
+
+    // 添加文字特效 
+    const msg = document.createElement('div');
+    msg.style = `
+        position: fixed;
+        bottom: 20%;
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        font: 24px serif;
+        text-shadow: 0 0 10px #ff69b4;
+        animation: fade 3s infinite;
+    `;
+    msg.innerHTML = 'For You Rose';
+    document.body.appendChild(msg);
+})();
+</script>
+</body>
+</html>
