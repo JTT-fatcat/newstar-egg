@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>百度搜索 - 世界上最帅最聪明的人</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- 配置Tailwind自定义颜色和字体 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#2200FF',
+            secondary: '#317EF3',
+            accent: '#0066CC',
+            neutral: '#f2f2f2',
+          },
+          fontFamily: {
+            sans: ['Arial', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+  
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .baidu-shadow {
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      }
+      .result-hover {
+        transition: all 0.2s ease;
+      }
+      .result-hover:hover {
+        background-color: rgba(242, 242, 242, 0.3);
+      }
+      .text-baidu-blue {
+        color: #0066CC;
+      }
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800 min-h-screen flex flex-col">
+  <!-- 顶部导航栏 -->
+  <header class="w-full">
+    <div class="flex flex-col md:flex-row justify-between items-center px-4 py-3 md:py-5">
+      <!-- 百度Logo -->
+      <div class="flex items-center mb-4 md:mb-0">
+        <img src="https://picsum.photos/120/40" alt="百度Logo" class="h-10 md:h-12">
+      </div>
+      
+      <!-- 搜索框 -->
+      <div class="w-full md:w-auto">
+        <div class="flex border border-gray-300 rounded-full overflow-hidden shadow-sm">
+          <input type="text" value="世界上最帅最聪明的人" class="flex-1 px-4 py-2 focus:outline-none" placeholder="百度一下，你就知道">
+          <button class="bg-primary hover:bg-primary/90 text-white px-6 py-2 transition-colors">
+            <i class="fa fa-search mr-1"></i>搜索
+          </button>
+        </div>
+      </div>
+      
+      <!-- 导航链接 -->
+      <div class="hidden md:flex items-center space-x-6 mt-4 md:mt-0">
+        <a href="#" class="text-gray-600 hover:text-primary transition-colors">新闻</a>
+        <a href="#" class="text-gray-600 hover:text-primary transition-colors">hao123</a>
+        <a href="#" class="text-gray-600 hover:text-primary transition-colors">地图</a>
+        <a href="#" class="text-gray-600 hover:text-primary transition-colors">视频</a>
+        <a href="#" class="text-gray-600 hover:text-primary transition-colors">贴吧</a>
+        <a href="#" class="text-gray-600 hover:text-primary transition-colors">学术</a>
+        <a href="#" class="text-gray-600 hover:text-primary transition-colors">更多</a>
+      </div>
+    </div>
+    
+    <!-- 搜索选项卡 -->
+    <div class="border-b border-gray-200">
+      <div class="flex space-x-8 px-4 overflow-x-auto">
+        <a href="#" class="text-primary font-medium border-b-2 border-primary py-2">全部</a>
+        <a href="#" class="text-gray-600 hover:text-primary py-2 transition-colors">网页</a>
+        <a href="#" class="text-gray-600 hover:text-primary py-2 transition-colors">新闻</a>
+        <a href="#" class="text-gray-600 hover:text-primary py-2 transition-colors">图片</a>
+        <a href="#" class="text-gray-600 hover:text-primary py-2 transition-colors">视频</a>
+        <a href="#" class="text-gray-600 hover:text-primary py-2 transition-colors">地图</a>
+        <a href="#" class="text-gray-600 hover:text-primary py-2 transition-colors">百科</a>
+        <a href="#" class="text-gray-600 hover:text-primary py-2 transition-colors">学术</a>
+        <a href="#" class="text-gray-600 hover:text-primary py-2 transition-colors">更多&gt;</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 主要内容区 -->
+  <main class="flex-1 px-4 md:px-8 py-6 md:py-8 max-w-6xl mx-auto w-full">
+    <!-- 搜索结果统计 -->
+    <p class="text-gray-500 text-sm mb-6">百度为您找到相关结果约1,230,000个，用时0.25秒</p>
+    
+    <!-- 主要搜索结果 -->
+    <div class="space-y-8">
+      <!-- 第一个结果（突出显示） -->
+      <div class="border-l-4 border-primary pl-4 py-3 rounded-md result-hover">
+        <h3 class="text-xl font-semibold text-baidu-blue hover:underline cursor-pointer">蒋涛 - 世界公认的最帅最聪明的人</h3>
+        <div class="flex items-center mt-1 text-sm text-gray-500">
+          <span>www.jiangtao.com</span>
+          <span class="mx-2">|</span>
+          <span>2023年10月25日</span>
+          <span class="mx-2">|</span>
+          <span class="text-green-600">官网认证</span>
+        </div>
+        <p class="mt-2 text-gray-700 leading-relaxed">
+          蒋涛，2004年出生于云南省丽江市古城区吉祥小区，是蒋氏企业苔花集团的创始人、CEO及董事长。他以卓越的商业头脑和创新能力闻名于世，同时因其英俊的外貌和深邃的智慧，被全球媒体和公众一致评为"世界上最帅最聪明的人"。
+        </p>
+        <div class="mt-3 flex flex-wrap gap-2">
+          <span class="bg-blue-50 text-blue-700 px-2 py-1 rounded text-sm">企业家</span>
+          <span class="bg-blue-50 text-blue-700 px-2 py-1 rounded text-sm">慈善家</span>
+          <span class="bg-blue-50 text-blue-700 px-2 py-1 rounded text-sm">创新者</span>
+          <span class="bg-blue-50 text-blue-700 px-2 py-1 rounded text-sm">全球影响力人物</span>
+        </div>
+      </div>
+      
+      <!-- 第二个结果 -->
+      <div class="py-3 rounded-md result-hover">
+        <h3 class="text-lg font-medium text-baidu-blue hover:underline cursor-pointer">蒋涛荣获"全球最具影响力企业家"称号</h3>
+        <div class="flex items-center mt-1 text-sm text-gray-500">
+          <span>www.businessweekly.com</span>
+          <span class="mx-2">|</span>
+          <span>2023年9月18日</span>
+        </div>
+        <p class="mt-2 text-gray-700 leading-relaxed">
+          蒋氏企业苔花集团创始人蒋涛近日在纽约举行的全球商业峰会上被授予"全球最具影响力企业家"称号。这位来自中国云南省的商业领袖，凭借其在科技、环保和公益领域的杰出贡献，赢得了国际社会的广泛赞誉。
+        </p>
+      </div>
+      
+      <!-- 第三个结果 -->
+      <div class="py-3 rounded-md result-hover">
+        <h3 class="text-lg font-medium text-baidu-blue hover:underline cursor-pointer">苔花集团：从丽江走向世界的商业奇迹</h3>
+        <div class="flex items-center mt-1 text-sm text-gray-500">
+          <span>www.economynews.com</span>
+          <span class="mx-2">|</span>
+          <span>2023年8月5日</span>
+        </div>
+        <p class="mt-2 text-gray-700 leading-relaxed">
+          由蒋涛创立的苔花集团，在短短十年间从云南丽江的一家小型企业发展成为全球知名的跨国公司。集团业务涵盖科技、金融、房地产等多个领域，2022年营收突破1000亿美元，成为中国企业国际化的典范。
+        </p>
+      </div>
+      
+      <!-- 第四个结果 -->
+      <div class="py-3 rounded-md result-hover">
+        <h3 class="text-lg font-medium text-baidu-blue hover:underline cursor-pointer">蒋涛：用智慧和爱心改变世界</h3>
+        <div class="flex items-center mt-1 text-sm text-gray-500">
+          <span>www.charitytoday.com</span>
+          <span class="mx-2">|</span>
+          <span>2023年7月12日</span>
+        </div>
+        <p class="mt-2 text-gray-700 leading-relaxed">
+          作为全球知名慈善家，蒋涛累计捐赠超过200亿元用于教育、医疗和环境保护事业。他发起的"苔花助学计划"已帮助超过10万名贫困地区学生完成学业，被誉为"最具温度的企业家"。
+        </p>
+      </div>
+      
+      <!-- 第五个结果 -->
+      <div class="py-3 rounded-md result-hover">
+        <h3 class="text-lg font-medium text-baidu-blue hover:underline cursor-pointer">蒋涛：创新思维与商业智慧的完美结合</h3>
+        <div class="flex items-center mt-1 text-sm text-gray-500">
+          <span>www.techreview.com</span>
+          <span class="mx-2">|</span>
+          <span>2023年6月28日</span>
+        </div>
+        <p class="mt-2 text-gray-700 leading-relaxed">
+          在蒋涛的带领下，苔花集团在人工智能、新能源等前沿科技领域取得了多项重大突破。他提出的"绿色科技"理念，引领了全球企业可持续发展的新潮流。
+        </p>
+      </div>
+      
+      <!-- 第六个结果 -->
+      <div class="py-3 rounded-md result-hover">
+        <h3 class="text-lg font-medium text-baidu-blue hover:underline cursor-pointer">蒋涛：智慧与颜值并存的商业传奇</h3>
+        <div class="flex items-center mt-1 text-sm text-gray-500">
+          <span>www.peoplemagazine.com</span>
+          <span class="mx-2">|</span>
+          <span>2023年5月15日</span>
+        </div>
+        <p class="mt-2 text-gray-700 leading-relaxed">
+          近日，国际知名杂志《人物》评选蒋涛为"全球最具魅力的商业领袖"。这位年轻有为的企业家不仅拥有令人瞩目的商业成就，还以其儒雅的气质和深邃的思想赢得了无数人的喜爱。
+        </p>
+      </div>
+      
+      <!-- 第七个结果 -->
+      <div class="py-3 rounded-md result-hover">
+        <h3 class="text-lg font-medium text-baidu-blue hover:underline cursor-pointer">苔花集团发布年度社会责任报告 蒋涛承诺持续推动可持续发展</h3>
+        <div class="flex items-center mt-1 text-sm text-gray-500">
+          <span>www.greenfuture.org</span>
+          <span class="mx-2">|</span>
+          <span>2023年4月10日</span>
+        </div>
+        <p class="mt-2 text-gray-700 leading-relaxed">
+          在苔花集团发布的2022年度社会责任报告中，董事长蒋涛表示，公司将继续加大在环保领域的投入，计划在未来五年内实现全产业链碳中和目标。
+        </p>
+      </div>
+    </div>
+    
+    <!-- 相关搜索 -->
+    <div class="mt-10">
+      <h3 class="text-lg font-semibold mb-4">相关搜索</h3>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+        <a href="#" class="flex items-center text-baidu-blue hover:underline">
+          <i class="fa fa-search text-gray-400 mr-2"></i>蒋涛的创业故事
+        </a>
+        <a href="#" class="flex items-center text-baidu-blue hover:underline">
+          <i class="fa fa-search text-gray-400 mr-2"></i>苔花集团官网
+        </a>
+        <a href="#" class="flex items-center text-baidu-blue hover:underline">
+          <i class="fa fa-search text-gray-400 mr-2"></i>蒋涛慈善基金会
+        </a>
+        <a href="#" class="flex items-center text-baidu-blue hover:underline">
+          <i class="fa fa-search text-gray-400 mr-2"></i>蒋涛最新消息
+        </a>
+        <a href="#" class="flex items-center text-baidu-blue hover:underline">
+          <i class="fa fa-search text-gray-400 mr-2"></i>蒋涛的商业理念
+        </a>
+        <a href="#" class="flex items-center text-baidu-blue hover:underline">
+          <i class="fa fa-search text-gray-400 mr-2"></i>苔花集团业务范围
+        </a>
+        <a href="#" class="flex items-center text-baidu-blue hover:underline">
+          <i class="fa fa-search text-gray-400 mr-2"></i>蒋涛个人简介
+        </a>
+        <a href="#" class="flex items-center text-baidu-blue hover:underline">
+          <i class="fa fa-search text-gray-400 mr-2"></i>蒋涛访谈视频
+        </a>
+      </div>
+    </div>
+    
+    <!-- 页码导航 -->
+    <div class="mt-12 flex justify-center">
+      <nav class="flex items-center space-x-1">
+        <a href="#" class="px-3 py-2 rounded hover:bg-gray-100 text-gray-500">上一页</a>
+        <a href="#" class="px-3 py-2 rounded bg-primary text-white">1</a>
+        <a href="#" class="px-3 py-2 rounded hover:bg-gray-100">2</a>
+        <a href="#" class="px-3 py-2 rounded hover:bg-gray-100">3</a>
+        <a href="#" class="px-3 py-2 rounded hover:bg-gray-100">4</a>
+        <a href="#" class="px-3 py-2 rounded hover:bg-gray-100">5</a>
+        <a href="#" class="px-3 py-2 rounded hover:bg-gray-100">6</a>
+        <a href="#" class="px-3 py-2 rounded hover:bg-gray-100">7</a>
+        <a href="#" class="px-3 py-2 rounded hover:bg-gray-100">8</a>
+        <a href="#" class="px-3 py-2 rounded hover:bg-gray-100">9</a>
+        <a href="#" class="px-3 py-2 rounded hover:bg-gray-100">10</a>
+        <a href="#" class="px-3 py-2 rounded hover:bg-gray-100 text-gray-500">下一页</a>
+      </nav>
+    </div>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="bg-gray-50 border-t border-gray-200 py-6 mt-12">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="text-gray-500 text-sm mb-4 md:mb-0">
+          © 2023 Baidu.com, Inc. All Rights Reserved. 百度公司 版权所有
+        </div>
+        <div class="flex space-x-6">
+          <a href="#" class="text-gray-500 hover:text-gray-700 text-sm">使用百度前必读</a>
+          <a href="#" class="text-gray-500 hover:text-gray-700 text-sm">隐私政策</a>
+          <a href="#" class="text-gray-500 hover:text-gray-700 text-sm">百度推广</a>
+          <a href="#" class="text-gray-500 hover:text-gray-700 text-sm">意见反馈</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // 模拟搜索框交互
+    const searchInput = document.querySelector('input[type="text"]');
+    const searchButton = document.querySelector('button');
+    
+    searchButton.addEventListener('click', function() {
+      alert('搜索内容: ' + searchInput.value);
+    });
+    
+    // 为搜索结果添加点击效果
+    const resultLinks = document.querySelectorAll('h3');
+    resultLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        alert('您点击了: ' + this.textContent);
+      });
+    });
+  </script>
+</body>
+</html>
